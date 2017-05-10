@@ -6,6 +6,8 @@ target 'objc_example_project_for_ci' do
   # use_frameworks!
 
   # Pods for objc_example_project_for_ci
+  pod 'Fabric'
+  pod 'Crashlytics'
 
   target 'objc_example_project_for_ciTests' do
     inherit! :search_paths

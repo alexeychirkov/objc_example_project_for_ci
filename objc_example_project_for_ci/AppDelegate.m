@@ -7,6 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "Fabric/Fabric.h"
+#import "Crashlytics/Crashlytics.h"
+#import "c_file.h"
+#import "NSString+C.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +20,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    [Crashlytics startWithAPIKey:@"testKey"];
+    NSString *before = @"abc";
+    char *c_before = get_string([before convertToCString]);
+    NSString *after = [NSString stringWithCString:c_before encoding:NSUTF8StringEncoding];
+    free(c_before);
+    NSLog(@"'%@' == '%@'", before, after);
     return YES;
 }
 
