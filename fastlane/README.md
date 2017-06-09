@@ -35,9 +35,9 @@ xcode-select --install
 fastlane ios test
 ```
 Runs all the tests
-### ios crashlytics
+### ios send_to_crashlytics
 ```
-fastlane ios crashlytics
+fastlane ios send_to_crashlytics
 ```
 Submit a new Beta Build to Crashlytics
 

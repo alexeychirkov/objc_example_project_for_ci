@@ -29,7 +29,7 @@ platform :ios do
 
     desc "Submit a new Beta Build to Crashlytics"
     desc "This will also make sure the profile is up to date"
-    lane :crashlytics do |options|
+    lane :send_to_crashlytics do |options|
         options = {
             # :workspace => "videochat-ios/videochat-ios.xcworkspace",
             :git_url => "git@github.com:alexeychirkov/ci_test_match_repo.git",
@@ -45,9 +45,16 @@ platform :ios do
             # :crashlytics_groups => "ios-dev"
         }.merge(options)
 
+        # ensure_git_status_clean
+
+        increment_version_number(bump_type: "patch")
 
         match(type: "development", readonly: true) # more information: https://codesigning.guide
-        gym(scheme: "objc_example_project_for_ci") # Build your app - more options available
+        gym(
+            scheme: "objc_example_project_for_ci",
+            clean: true,
+            output_directory: options[:output_directory],
+        ) # Build your app - more options available
         crashlytics(
             api_token: options[:crashlytics_api_token],
             build_secret: options[:crashlytics_build_secret],
@@ -57,6 +64,12 @@ platform :ios do
             notifications: true,
             debug: true
         )
+        upload_symbols_to_crashlytics
+
+        commit_version_bump
+
+        clear_derived_data
+        clean_build_artifacts
 
         # sh "your_script.sh"
         # You can also use other beta testing services here (run `fastlane actions`)
@@ -97,6 +110,7 @@ platform :ios do
         #   message: exception.message,
         #   success: false
         # )
+        reset_git_repo
     end
 end
 

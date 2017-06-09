@@ -19,7 +19,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [Crashlytics startWithAPIKey:@"testKey"];
+    [Fabric with:@[[Crashlytics class]]];
     
     NSString *before = @"abc";
     char *c_before = [MyClass getCString:before];
