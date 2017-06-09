@@ -9,8 +9,7 @@
 #import "AppDelegate.h"
 #import "Fabric/Fabric.h"
 #import "Crashlytics/Crashlytics.h"
-#import "c_file.h"
-#import "NSString+C.h"
+#import "MyClass.h"
 
 @interface AppDelegate ()
 
@@ -21,11 +20,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [Crashlytics startWithAPIKey:@"testKey"];
+    
     NSString *before = @"abc";
-    char *c_before = get_string([before convertToCString]);
-    NSString *after = [NSString stringWithCString:c_before encoding:NSUTF8StringEncoding];
+    char *c_before = [MyClass getCString:before];
+    NSString *after = [MyClass getNSString:c_before];
+    NSLog(@"before: '%@'", before);
+    NSLog(@"after: '%@'", after);
     free(c_before);
-    NSLog(@"'%@' == '%@'", before, after);
     return YES;
 }
 

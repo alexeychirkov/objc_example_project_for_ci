@@ -7,8 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "c_file.h"
-#import "NSString+C.h"
+#import "MyClass.h"
 
 @interface objc_example_project_for_ciTests : XCTestCase
 
@@ -30,8 +29,8 @@
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
     NSString *before = @"abc";
-    char *c_before = get_string([before convertToCString]);
-    NSString *after = [NSString stringWithCString:c_before encoding:NSUTF8StringEncoding];
+    char *c_before = [MyClass getCString:before];
+    NSString *after = [MyClass getNSString:c_before];
     free(c_before);
     XCTAssertEqualObjects(before, after);
 }

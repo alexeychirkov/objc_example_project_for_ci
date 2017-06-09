@@ -15,6 +15,7 @@
 		0A0C98501EC2F73C00F56420 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A0C984E1EC2F73C00F56420 /* LaunchScreen.storyboard */; };
 		0A0C985B1EC2F73C00F56420 /* objc_example_project_for_ciTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0C985A1EC2F73C00F56420 /* objc_example_project_for_ciTests.m */; };
 		0A0C98661EC2F73C00F56420 /* objc_example_project_for_ciUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0C98651EC2F73C00F56420 /* objc_example_project_for_ciUITests.m */; };
+		0A400E811EEA8E9800906061 /* MyClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A400E801EEA8E9800906061 /* MyClass.m */; };
 		3793D3C045B7C52FE900895B /* libPods-objc_example_project_for_ciTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E03626E670B094BA19A73548 /* libPods-objc_example_project_for_ciTests.a */; };
 		7BEFAF76D937747EAEF88D23 /* libPods-objc_example_project_for_ci.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19D824606EA110201E392D8D /* libPods-objc_example_project_for_ci.a */; };
 		B7BBBC96C26628313E1387DA /* libPods-objc_example_project_for_ciUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 97F92434291BAD6AF512F4FD /* libPods-objc_example_project_for_ciUITests.a */; };
@@ -57,6 +58,8 @@
 		0A0C98611EC2F73C00F56420 /* objc_example_project_for_ciUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = objc_example_project_for_ciUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A0C98651EC2F73C00F56420 /* objc_example_project_for_ciUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = objc_example_project_for_ciUITests.m; sourceTree = "<group>"; };
 		0A0C98671EC2F73C00F56420 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A400E7F1EEA8E9800906061 /* MyClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyClass.h; sourceTree = "<group>"; };
+		0A400E801EEA8E9800906061 /* MyClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyClass.m; sourceTree = "<group>"; };
 		19D824606EA110201E392D8D /* libPods-objc_example_project_for_ci.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-objc_example_project_for_ci.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		627F1B79C2FF11581FBDB810 /* Pods-objc_example_project_for_ciUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-objc_example_project_for_ciUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-objc_example_project_for_ciUITests/Pods-objc_example_project_for_ciUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8E6319055FBEC7EE64EC91FD /* Pods-objc_example_project_for_ci.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-objc_example_project_for_ci.release.xcconfig"; path = "Pods/Target Support Files/Pods-objc_example_project_for_ci/Pods-objc_example_project_for_ci.release.xcconfig"; sourceTree = "<group>"; };
@@ -137,6 +140,8 @@
 				C94F3BDC1F9AE83FD0D76FDA /* c_file.h */,
 				C94F347B7C7299D317174115 /* NSString+C.m */,
 				C94F37738E967B211719603B /* NSString+C.h */,
+				0A400E7F1EEA8E9800906061 /* MyClass.h */,
+				0A400E801EEA8E9800906061 /* MyClass.m */,
 			);
 			path = objc_example_project_for_ci;
 			sourceTree = "<group>";
@@ -473,6 +478,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A400E811EEA8E9800906061 /* MyClass.m in Sources */,
 				0A0C98481EC2F73C00F56420 /* ViewController.m in Sources */,
 				0A0C98451EC2F73C00F56420 /* AppDelegate.m in Sources */,
 				0A0C98421EC2F73C00F56420 /* main.m in Sources */,
