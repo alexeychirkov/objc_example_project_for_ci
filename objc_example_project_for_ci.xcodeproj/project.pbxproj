@@ -19,6 +19,7 @@
 		3793D3C045B7C52FE900895B /* libPods-objc_example_project_for_ciTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E03626E670B094BA19A73548 /* libPods-objc_example_project_for_ciTests.a */; };
 		7BEFAF76D937747EAEF88D23 /* libPods-objc_example_project_for_ci.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19D824606EA110201E392D8D /* libPods-objc_example_project_for_ci.a */; };
 		B7BBBC96C26628313E1387DA /* libPods-objc_example_project_for_ciUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 97F92434291BAD6AF512F4FD /* libPods-objc_example_project_for_ciUITests.a */; };
+		C94F3105C28714C628576DC1 /* Appfile in Resources */ = {isa = PBXBuildFile; fileRef = C94F3B9B64E5D7F253734592 /* Appfile */; };
 		C94F330143D7FBE4A0E342E1 /* NSString+C.m in Sources */ = {isa = PBXBuildFile; fileRef = C94F347B7C7299D317174115 /* NSString+C.m */; };
 		C94F3B92F8576467133CE732 /* c_file.c in Sources */ = {isa = PBXBuildFile; fileRef = C94F37093D7C71D3FF894F89 /* c_file.c */; };
 /* End PBXBuildFile section */
@@ -70,6 +71,7 @@
 		C94F347B7C7299D317174115 /* NSString+C.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+C.m"; sourceTree = "<group>"; };
 		C94F37093D7C71D3FF894F89 /* c_file.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = c_file.c; sourceTree = "<group>"; };
 		C94F37738E967B211719603B /* NSString+C.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+C.h"; sourceTree = "<group>"; };
+		C94F3B9B64E5D7F253734592 /* Appfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Appfile; path = fastlane/Appfile; sourceTree = "<group>"; };
 		C94F3BDC1F9AE83FD0D76FDA /* c_file.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c_file.h; sourceTree = "<group>"; };
 		E03626E670B094BA19A73548 /* libPods-objc_example_project_for_ciTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-objc_example_project_for_ciTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -111,6 +113,7 @@
 				0A0C983E1EC2F73C00F56420 /* Products */,
 				CF455CE09688648071A1949F /* Pods */,
 				BE478F446CF0C86902F3173C /* Frameworks */,
+				C94F3B9B64E5D7F253734592 /* Appfile */,
 			);
 			sourceTree = "<group>";
 		};
@@ -272,7 +275,7 @@
 					0A0C983C1EC2F73C00F56420 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = L55G758PXG;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					0A0C98551EC2F73C00F56420 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -316,6 +319,7 @@
 				0A0C98501EC2F73C00F56420 /* LaunchScreen.storyboard in Resources */,
 				0A0C984D1EC2F73C00F56420 /* Assets.xcassets in Resources */,
 				0A0C984B1EC2F73C00F56420 /* Main.storyboard in Resources */,
+				C94F3105C28714C628576DC1 /* Appfile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,7 +352,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		6C58EA5613A2B942DBA42CFC /* [CP] Copy Pods Resources */ = {
@@ -393,7 +397,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		C32BC66EA8D9605DB7CA0F81 /* [CP] Check Pods Manifest.lock */ = {
@@ -408,7 +412,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CD831A6D11D560FA1C5D9360 /* [CP] Embed Pods Frameworks */ = {
@@ -636,6 +640,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rubysparklabs.objc-example-project-for-ci";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "ec15f6e3-0d86-415f-ab28-c75f96d78bfe";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.rubysparklabs.objc-example-project-for-ci";
 			};
 			name = Debug;
 		};
@@ -644,11 +650,14 @@
 			baseConfigurationReference = 8E6319055FBEC7EE64EC91FD /* Pods-objc_example_project_for_ci.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = L55G758PXG;
 				INFOPLIST_FILE = objc_example_project_for_ci/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rubysparklabs.objc-example-project-for-ci";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8322d5ce-b25f-4dbc-ab1a-c9a8d8f7c9cf";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.rubysparklabs.objc-example-project-for-ci";
 			};
 			name = Release;
 		};

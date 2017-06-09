@@ -1,0 +1,109 @@
+# Customise this file, documentation can be found here:
+# https://github.com/fastlane/fastlane/tree/master/fastlane/docs
+# All available actions: https://docs.fastlane.tools/actions
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "2.37.0"
+
+default_platform :ios
+
+platform :ios do
+    before_all do
+        # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
+        cocoapods
+
+    end
+
+    desc "Runs all the tests"
+    lane :test do
+        scan(scheme:"Pods-objc_example_project_for_ciTests")
+        scan(scheme:"Pods-objc_example_project_for_ciUITests")
+    end
+
+    desc "Submit a new Beta Build to Crashlytics"
+    desc "This will also make sure the profile is up to date"
+    lane :crashlytics do |options|
+        options = {
+            # :workspace => "videochat-ios/videochat-ios.xcworkspace",
+            :git_url => "git@github.com:alexeychirkov/ci_test_match_repo.git",
+            :output_directory => "./fastlane_exclude_from_git",
+            :app_identifier => "com.rubysparklabs.objc-example-project-for-ci",
+            :profile_type => "development",
+            :scheme => "objc_example_project_for_ci",
+            :crashlytics_api_token => "69a3986766fe5bc97776e98e2aebcf12490cbfb9",
+            :crashlytics_build_secret => "1feb5fc0559acb2052e3c6bbf5bc541e0c04d0e73c23284d645f681f0287f243",
+            :crashlytics_changelog => options[:changelog],
+            :crashlytics_groups => "ios-riga-video-conf-call",
+            :crashlytics_emails => "alexey.chirkov@rubylight.com"
+            # :crashlytics_groups => "ios-dev"
+        }.merge(options)
+
+
+        match(type: "development", readonly: true) # more information: https://codesigning.guide
+        gym(scheme: "objc_example_project_for_ci") # Build your app - more options available
+        crashlytics(
+            api_token: options[:crashlytics_api_token],
+            build_secret: options[:crashlytics_build_secret],
+            # notes: changelog,
+            # groups: options[:crashlytics_groups],
+            emails: options[:crashlytics_emails],
+            notifications: true,
+            debug: true
+        )
+
+        # sh "your_script.sh"
+        # You can also use other beta testing services here (run `fastlane actions`)
+    end
+
+    desc "Submit a new Beta Build to Apple TestFlight"
+    desc "This will also make sure the profile is up to date"
+    lane :testflight do
+        match(type: "appstore", readonly: true) # more information: https://codesigning.guide
+        gym(scheme: "objc_example_project_for_ci") # Build your app - more options available
+        pilot
+
+        # sh "your_script.sh"
+        # You can also use other beta testing services here (run `fastlane actions`)
+    end
+
+    desc "Deploy a new version to the App Store"
+    lane :release do
+        match(type: "appstore", readonly: true)
+        # snapshot
+        gym(scheme: "objc_example_project_for_ci") # Build your app - more options available
+        deliver(force: true)
+        # frameit
+    end
+
+    # You can define as many lanes as you want
+
+    after_all do |lane|
+        # This block is called, only if the executed lane was successful
+
+        # slack(
+        #   message: "Successfully deployed new App Update."
+        # )
+    end
+
+    error do |lane, exception|
+        # slack(
+        #   message: exception.message,
+        #   success: false
+        # )
+    end
+end
+
+
+# More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md
+# All available actions: https://docs.fastlane.tools/actions
+
+# fastlane reports which actions are used. No personal data is recorded. 
+# Learn more at https://github.com/fastlane/fastlane#metrics
