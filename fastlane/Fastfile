@@ -24,7 +24,7 @@ platform :ios do
 
     desc "Runs all the tests"
     lane :test do
-        scan(scheme:"objc_example_project_for_ci")
+        scan(scheme:"objc_example_project_for_ci", device: "iPhone 7")
     end
 
     desc "Submit a new Beta Build to Crashlytics"

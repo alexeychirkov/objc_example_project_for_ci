@@ -4,6 +4,6 @@
     <testcase classname='objc_example_project_for_ciTests' name='testExample' time='0.001'/>
   </testsuite>
   <testsuite name='objc_example_project_for_ciUITests' tests='1' failures='0'>
-    <testcase classname='objc_example_project_for_ciUITests' name='testExample' time='6.791'/>
+    <testcase classname='objc_example_project_for_ciUITests' name='testExample' time='6.780'/>
   </testsuite>
 </testsuites>
