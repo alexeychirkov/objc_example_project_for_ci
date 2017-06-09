@@ -24,7 +24,7 @@ platform :ios do
 
     desc "Runs all the tests"
     lane :test do
-        scan
+        scan(scheme:"objc_example_project_for_ci")
     end
 
     desc "Submit a new Beta Build to Crashlytics"
