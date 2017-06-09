@@ -18,7 +18,7 @@ default_platform :ios
 platform :ios do
     before_all do
         # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
-        cocoapods
+        # cocoapods
 
     end
 
@@ -66,7 +66,7 @@ platform :ios do
         )
         upload_symbols_to_crashlytics
 
-        build_number = get_build_number
+        build_number = get_info_plist_value(path: "./#{options[:scheme]}/Info.plist", key: "CFBundleShortVersionString")
         commit_version_bump(message: "Version Bump: #{build_number}")
 
         clear_derived_data
