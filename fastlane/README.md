@@ -47,9 +47,9 @@ fastlane ios send_to_crashlytics
 Submit a new Beta Build to Crashlytics
 
 This will also make sure the profile is up to date
-### ios testflight
+### ios send_to_testflight
 ```
-fastlane ios testflight
+fastlane ios send_to_testflight
 ```
 Submit a new Beta Build to Apple TestFlight
 
