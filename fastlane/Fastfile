@@ -58,6 +58,7 @@ platform :ios do
             scheme: "objc_example_project_for_ci",
             clean: true,
             output_directory: options[:output_directory],
+            configuration: "Debug"
         ) # Build your app - more options available
         crashlytics(
             api_token: options[:crashlytics_api_token],
