@@ -108,16 +108,16 @@ platform :ios do
         puts "Building with options: #{options}"
         # ensure_git_status_clean
 
-        increment_version_number(bump_type: "patch")
+        # increment_version_number(bump_type: "patch")
 
-        match(type: "development", readonly: true)
+        match(type: options[:profile_type], readonly: true)
 
         gym(
             scheme: "objc_example_project_for_ci",
-            export_method: "development",
+            export_method: options[:profile_type],
             clean: true,
             output_directory: options[:output_directory],
-            configuration: "Debug",
+            configuration: "Release",
             workspace: options[:workspace]
         )
 
@@ -137,12 +137,37 @@ platform :ios do
     desc "Submit a new Beta Build to Apple TestFlight"
     desc "This will also make sure the profile is up to date"
     lane :send_to_testflight do
-        match(type: "appstore", readonly: true) # more information: https://codesigning.guide
-        gym(scheme: "objc_example_project_for_ci") # Build your app - more options available
-        pilot
+        sh "pod install --no-repo-update"
 
-        # sh "your_script.sh"
-        # You can also use other beta testing services here (run `fastlane actions`)
+        options = {
+            :workspace => "objc_example_project_for_ci.xcworkspace",
+            :git_url => "git@github.com:alexeychirkov/ci_test_match_repo.git",
+            :output_directory => "./fastlane_exclude_from_git",
+            :app_identifier => "com.rubysparklabs.objc-example-project-for-ci",
+            :profile_type => "appstore",
+            :scheme => "objc_example_project_for_ci",
+            :crashlytics_api_token => "69a3986766fe5bc97776e98e2aebcf12490cbfb9",
+            :crashlytics_build_secret => "1feb5fc0559acb2052e3c6bbf5bc541e0c04d0e73c23284d645f681f0287f243",
+            :crashlytics_changelog => options[:changelog],
+            :crashlytics_groups => "ios-riga-video-conf-call",
+            :crashlytics_emails => "alexey.chirkov@rubylight.com"
+            # :crashlytics_groups => "ios-dev"
+        }.merge(options)
+
+        puts "Building with options: #{options}"
+        
+        match(type: options[:profile_type], readonly: true)
+
+        gym(
+            scheme: "objc_example_project_for_ci",
+            export_method: options[:profile_type],
+            clean: true,
+            output_directory: options[:output_directory],
+            configuration: "Release",
+            workspace: options[:workspace]
+        )
+
+        pilot
     end
 
     desc "Deploy a new version to the App Store"
@@ -171,7 +196,7 @@ platform :ios do
         #   message: exception.message,
         #   success: false
         # )
-        reset_git_repo
+        # reset_git_repo
     end
 end
 
