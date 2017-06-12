@@ -649,6 +649,7 @@
 			baseConfigurationReference = C523DC179810EE76B186292D /* Pods-objc_example_project_for_ci.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = L55G758PXG;
 				INFOPLIST_FILE = objc_example_project_for_ci/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
