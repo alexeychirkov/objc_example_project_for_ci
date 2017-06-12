@@ -28,14 +28,14 @@ platform :ios do
     end
 
     lane :test do
-        scan(scheme:"objc_example_project_for_ci", device: "iPhone 7")
+        scan(scheme: "objc_example_project_for_ci", device: "iPhone 7")
     end
 
     desc "Submit a new Beta Build to Crashlytics"
     desc "This will also make sure the profile is up to date"
     lane :send_to_crashlytics do |options|
         options = {
-            # :workspace => "videochat-ios/videochat-ios.xcworkspace",
+            :workspace => "objc_example_project_for_ci/objc_example_project_for_ci.xcworkspace",
             :git_url => "git@github.com:alexeychirkov/ci_test_match_repo.git",
             :output_directory => "./fastlane_exclude_from_git",
             :app_identifier => "com.rubysparklabs.objc-example-project-for-ci",
@@ -53,13 +53,17 @@ platform :ios do
 
         increment_version_number(bump_type: "patch")
 
-        match(type: "development", readonly: true) # more information: https://codesigning.guide
+        match(type: "development", readonly: true)
+
         gym(
             scheme: "objc_example_project_for_ci",
             clean: true,
             output_directory: options[:output_directory],
-            configuration: "Debug"
-        ) # Build your app - more options available
+            use_legacy_build_api: true,
+            configuration: "Debug",
+            workspace: options[:workspace]
+        )
+
         crashlytics(
             api_token: options[:crashlytics_api_token],
             build_secret: options[:crashlytics_build_secret],
