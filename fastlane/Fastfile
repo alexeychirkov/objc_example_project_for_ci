@@ -57,9 +57,9 @@ platform :ios do
 
         gym(
             scheme: "objc_example_project_for_ci",
+            export_method: "development",
             clean: true,
             output_directory: options[:output_directory],
-            use_legacy_build_api: true,
             configuration: "Debug",
             workspace: options[:workspace]
         )
