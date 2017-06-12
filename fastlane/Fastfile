@@ -24,7 +24,7 @@ platform :ios do
 
     desc "Cocoapods update"
     lane :cocoapods_update do
-        cocoapods
+        sh "pod install --no-repo-update"
     end
 
     lane :test do
@@ -32,6 +32,9 @@ platform :ios do
     end
 
     lane :send_to_crashlytics do |options|
+
+        sh "pod install --no-repo-update"
+        
         options = {
             :workspace => "objc_example_project_for_ci.xcworkspace",
             :git_url => "git@github.com:alexeychirkov/ci_test_match_repo.git",
@@ -49,7 +52,7 @@ platform :ios do
 
         # ensure_git_status_clean
 
-        increment_version_number(bump_type: "patch")
+        # increment_version_number(bump_type: "patch")
 
         match(type: "development", readonly: true)
 
@@ -100,6 +103,7 @@ platform :ios do
             # :crashlytics_groups => "ios-dev"
         }.merge(options)
 
+        puts "Building with options: #{options}"
         # ensure_git_status_clean
 
         increment_version_number(bump_type: "patch")
