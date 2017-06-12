@@ -30,11 +30,16 @@ xcode-select --install
 
 # Available Actions
 ## iOS
+### ios cocoapods_update
+```
+fastlane ios cocoapods_update
+```
+Cocoapods update
 ### ios test
 ```
 fastlane ios test
 ```
-Runs all the tests
+
 ### ios send_to_crashlytics
 ```
 fastlane ios send_to_crashlytics
@@ -54,6 +59,11 @@ This will also make sure the profile is up to date
 fastlane ios release
 ```
 Deploy a new version to the App Store
+### ios a
+```
+fastlane ios a
+```
+
 
 ----
 
