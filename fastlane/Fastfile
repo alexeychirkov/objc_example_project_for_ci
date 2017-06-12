@@ -87,7 +87,7 @@ platform :ios do
 
     desc "Submit a new Beta Build to Apple TestFlight"
     desc "This will also make sure the profile is up to date"
-    lane :testflight do
+    lane :send_to_testflight do
         match(type: "appstore", readonly: true) # more information: https://codesigning.guide
         gym(scheme: "objc_example_project_for_ci") # Build your app - more options available
         pilot
