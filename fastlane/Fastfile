@@ -35,7 +35,7 @@ platform :ios do
     desc "This will also make sure the profile is up to date"
     lane :send_to_crashlytics do |options|
         options = {
-            :workspace => "objc_example_project_for_ci/objc_example_project_for_ci.xcworkspace",
+            :workspace => "objc_example_project_for_ci.xcworkspace",
             :git_url => "git@github.com:alexeychirkov/ci_test_match_repo.git",
             :output_directory => "./fastlane_exclude_from_git",
             :app_identifier => "com.rubysparklabs.objc-example-project-for-ci",
@@ -122,7 +122,7 @@ platform :ios do
         #   message: exception.message,
         #   success: false
         # )
-        # reset_git_repo
+        reset_git_repo
     end
 end
 
